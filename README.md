@@ -1,6 +1,6 @@
 # ParkingSensorsMonitor
 
-This is library to read data send by cheap parking sensors on monitor line, probably most units with some sort of "monitor" send same data. 
+This repository contain library to read data send by cheap parking sensors on monitor line, probably most units with some "monitor" send the same data. 
 
 This is example of board with desired functionality:
 
@@ -10,7 +10,7 @@ ant here is one which was in same plastic box but luck funkcionality:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175726.jpg" />
 
-Protocol used in comunication between parking sensor unit and monitor is pulse width modulation at 5V level. Packet is 32bits long from each 8bits represent real value of distance measured by sensor, expect 0xFF which represent infinit distance => or no obsticle detected by sensor.
+The protocol used in communication between the parking sensor unit and the monitor is pulse width modulation at 5V level. The packet is 32bits long, each 8bits represent the real value of distance measured by sensor, expect 0xFF which represent infinite distance => or no obstacle detected by the sensor.
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/pulseview1.png" />
 
@@ -26,13 +26,12 @@ Logic one is represented with 200us pulse:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/200us.png" />
 
-This library require pin with  external interupt (INTx) to be used, also TIMER2 is used (ticks at 0.5us + compare ISR is fired evry 10 ticks, so precition is 5us) is used for timing pulses,any timer can be used if changed in code and configured correctly..
+This library requires pin with external interrupt (INTx), also TIMER2 is used for timing of pulses, timer ticks at 0.5us + compare ISR is fired every ten ticks, so precision is 5us. But any timer can be used if changed in code and configured correctly.
 
-When library receive all 32bits of data calling available() function will return true and data can be read by 
+When the library receives all 32bits of data calling available() function will return true, and data can then be read by calling on of this functions:
  
- - read() function, this function also clear internal attribute indication that new data are available
+ - read(), this function also clear internal attribute indication that new data are available
  or
- - calling getDistance(sensor_number_from_1_to_4) or getDistanceInMeters(sensor_number_from_1_to_4) function will return only data for specified sensor.
+ - getDistance(sensor) or getDistanceInMeters(sensor),this function will return only data for specified sensor.
  
- Calling clearNewData() function will clearn internal attribute about received new data. Read() function clearn thisn attribute automaticaly.
- 
+Using read() function does not require calling clearNewData() function,  which clear internal attribute about received new data. On the other side, using getDistance(sensor) or getDistanceInMeters(sensor) require to call  clearNewData() after reading data.
