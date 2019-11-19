@@ -26,7 +26,7 @@ Logic one is represented with 200us pulse:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/200us.png" />
 
-This library requires pin with external interrupt (INTx), also TIMER2 is used for timing of pulses, timer ticks at 0.5us + compare ISR is fired every ten ticks, so precision is 5us. But any timer can be used if changed in code and configured correctly.
+This library requires pin with external interrupt (INTx), also TIMER2 is used for timing of pulses, timer ticks at 0.5us and compare ISR is fired every ten ticks, so precision is 5us. But any timer can be used if changed in code and configured correctly.
 
 When the library receives all 32bits of data calling available() function will return true, and data can then be read by calling on of this functions:
  
