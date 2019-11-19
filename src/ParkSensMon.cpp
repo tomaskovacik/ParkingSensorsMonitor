@@ -73,14 +73,14 @@ void ParkSensMon::startCountWidthOfPulse(void)
 
 void ParkSensMon::countWidthOfPulse(void)
 {
+if (__newData == 0){
 //  __enableCounting=0;
   uint16_t __pulseWidth = __pulses * 5;
   __pulses = 0;
   if (__pulseWidth > 1000) //start
   {
     __bits = 0;
-  }
-  else {
+  } else {
     __data <<= 1;// 100us => 0
     if (__pulseWidth > 150) { //200us => 1
       __data |=  1;
@@ -90,11 +90,13 @@ void ParkSensMon::countWidthOfPulse(void)
   if (__bits == 33) { //we got all bits
     __newData = 1;
   }
+}
   attachInterrupt(digitalPinToInterrupt(6), &ParkSensMon::startCountWidthOfPulse, RISING);
 }
 
 uint32_t ParkSensMon::read(void)
 {
+	__newData=0;
 	return __data;
 }
 
