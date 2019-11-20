@@ -41,10 +41,4 @@ Using read() function does not require calling clearNewData() function,  which c
 Connect ground together.
 Connect arduino pin with external **INT**errupt to "data" pin.
 
-+-------------------------------------------------------------------------------+
-
-|                                                                               |
-
-| [powerGround NC power+12V][ground data +5V buzzer][emptyslot][S1][S2][S3][S4] |
-
-+-------------------------------------------------------------------------------+
+[powerGround NC power+12V][ground data +5V buzzer][emptyslot][S1][S2][S3][S4]
