@@ -34,7 +34,7 @@
 
 //#define USE_TIMER0
 //#define USE_TIMER1
-//#define USE_TIMER2
+#define USE_TIMER2
 //#define USE_TIMER3
 //#define USE_TIMER4
 #define USE_TIMER5
@@ -88,7 +88,6 @@ void ParkSensMon::setTimer(void){
 #define __TIMERX_COMPA_vect TIMER2_COMPA_vect
 #endif
 
-
 #ifdef USE_TIMER3
 void ParkSensMon::setTimer(void){
   // @ 0.5us ticks
@@ -130,7 +129,6 @@ void ParkSensMon::setTimer(void){
 }
 #define __TIMERX_COMPA_vect TIMER5_COMPA_vect
 #endif
-
 
 void ParkSensMon::begin()
 {
