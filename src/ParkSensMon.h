@@ -39,6 +39,7 @@ volatile static uint8_t __newData = 0;
 //volatile static uint8_t __enableCounting=0;
 volatile static uint16_t __pulses = 0;
 volatile static uint32_t __data;
+static uint8_t __inPin;
 
 class ParkSensMon
 {
@@ -54,6 +55,6 @@ class ParkSensMon
 	static void startCountWidthOfPulse(void);
 	static void countWidthOfPulse(void);
   private:
-	uint8_t __inPin;
+	void setTimer(void);
 };
 #endif
