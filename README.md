@@ -35,3 +35,15 @@ When the library receives all 32bits of data calling available() function will r
  - getDistance(sensor) or getDistanceInMeters(sensor),this function will return only data for specified sensor.
  
 Using read() function does not require calling clearNewData() function,  which clear internal attribute about received new data. On the other side, using getDistance(sensor) or getDistanceInMeters(sensor) require to call  clearNewData() after reading data.
+
+#How to connect
+
+Connect ground together.
+Connect arduino pin with external **INT**errupt to "data" pin.
+
++-------------------------------------------------------------------------------+
+|                                                                               |
+| [powerGround NC power+12V][ground data +5V buzzer][emptyslot][S1][S2][S3][S4] |
++-------------------------------------------------------------------------------+
+
+
