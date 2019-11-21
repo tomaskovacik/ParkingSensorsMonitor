@@ -37,7 +37,7 @@
 #define USE_TIMER2
 //#define USE_TIMER3
 //#define USE_TIMER4
-//#define USE_TIMER5
+#define USE_TIMER5
 
 ParkSensMon::ParkSensMon(uint8_t inpin)
 {
@@ -58,6 +58,11 @@ void ParkSensMon::setTimer(void){
   TIMSK0 |= _BV(OCIE0A); // enable output compare interrupt A on timer0
 }
 #define __TIMERX_COMPA_vect TIMER0_COMPA_vect
+#undef USE_TIMER1
+#undef USE_TIMER2
+#undef USE_TIMER3
+#undef USE_TIMER4
+#undef USE_TIMER5
 #endif
 
 #ifdef USE_TIMER1
@@ -72,6 +77,10 @@ void ParkSensMon::setTimer(void){
   TIMSK1 |= _BV(OCIE1A); // enable output compare interrupt A on timer0
 }
 #define __TIMERX_COMPA_vect TIMER1_COMPA_vect
+#undef USE_TIMER2
+#undef USE_TIMER3
+#undef USE_TIMER4
+#undef USE_TIMER5
 #endif
 
 #ifdef USE_TIMER2
@@ -86,6 +95,9 @@ void ParkSensMon::setTimer(void){
   TIMSK2 |= _BV(OCIE2A); // enable output compare interrupt A on timer0
 }
 #define __TIMERX_COMPA_vect TIMER2_COMPA_vect
+#undef USE_TIMER3
+#undef USE_TIMER4
+#undef USE_TIMER5
 #endif
 
 #ifdef USE_TIMER3
@@ -100,6 +112,8 @@ void ParkSensMon::setTimer(void){
   TIMSK3 |= _BV(OCIE3A); // enable output compare interrupt A on timer0
 }
 #define __TIMERX_COMPA_vect TIMER3_COMPA_vect
+#undef USE_TIMER4
+#undef USE_TIMER5
 #endif
 
 #ifdef USE_TIMER4
@@ -114,6 +128,7 @@ void ParkSensMon::setTimer(void){
   TIMSK4 |= _BV(OCIE4A); // enable output compare interrupt A on timer0
 }
 #define __TIMERX_COMPA_vect TIMER4_COMPA_vect
+#undef USE_TIMER5
 #endif
 
 #ifdef USE_TIMER5
