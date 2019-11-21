@@ -41,7 +41,7 @@
 #define USE_TIMER2
 //#define USE_TIMER3
 //#define USE_TIMER4
-#define USE_TIMER5
+//#define USE_TIMER5
 
 ParkSensMon::ParkSensMon(uint8_t inpin)
 {
@@ -159,7 +159,6 @@ void ParkSensMon::begin()
 ISR(__TIMERX_COMPA_vect) //5us
 {
 //  if (__enableCounting){
-//  if (__pulses == 9999) __pulses = 0;
   __pulses++;
 // }
 }
@@ -173,17 +172,19 @@ void ParkSensMon::startCountWidthOfPulse(void)
 
 void ParkSensMon::countWidthOfPulse(void)
 {
-if (__newData == 0){
+if (__newData == 0) {
 //  __enableCounting=0;
-  uint16_t __pulseWidth = __pulses;
+  uint8_t __pulseWidth = __pulses;
   __pulses = 0;
   if (__pulseWidth > STARTPULSE) //start
   {
     __bits = 0;
-  } else {
-    __data <<= 1;// 100us => 0
+  }
+  else
+  {
+    __data[(__bits-1)/8] <<= 1;// 100us => 0
     if (__pulseWidth > LONGPULSE) { //200us => 1
-      __data |=  1;
+      __data[(__bits-1)/8] |=  1;
     }
     __bits++; 
   }
@@ -194,26 +195,31 @@ if (__newData == 0){
   attachInterrupt(digitalPinToInterrupt(__inPin), &ParkSensMon::startCountWidthOfPulse, RISING);
 }
 
-uint32_t ParkSensMon::read(void)
-{
-	__newData=0;
-	return __data;
-}
-
-
 uint8_t ParkSensMon::available(void)
 {
 	return __newData;
 }
 
+uint8_t ParkSensMon::objectDetected(void)
+{
+	if (__newData && (__data[0]<0xFF || __data[1]<0xFF || __data[2]<0xFF || __data[3]<0xFF)) return true;
+	return false;
+}
+
 uint8_t ParkSensMon::getDistance(uint8_t sensor)
 {
-	return ((__data>>(32-(sensor*8))) & 0xFF);
+	switch(sensor)
+	{
+		case 1:	return __data[0];
+		case 2:	return __data[3];
+		case 3:	return __data[2];
+		case 4:	return __data[1];
+	}
 }
 
 float ParkSensMon::getDistanceInMeters(uint8_t sensor)
 {
-        return (float)ParkSensMon::getDistance(sensor)/10;
+	return (float)ParkSensMon::getDistance(sensor)/10;
 }
 
 

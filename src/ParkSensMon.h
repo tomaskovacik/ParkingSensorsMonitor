@@ -37,8 +37,8 @@
 volatile static uint8_t __bits = 0;
 volatile static uint8_t __newData = 0;
 //volatile static uint8_t __enableCounting=0;
-volatile static uint16_t __pulses = 0;
-volatile static uint32_t __data;
+volatile static uint8_t __pulses = 0;
+volatile static uint8_t __data[4];
 static uint8_t __inPin;
 
 class ParkSensMon
@@ -47,7 +47,7 @@ class ParkSensMon
 	ParkSensMon(uint8_t inpin);
 	~ParkSensMon();
 	void begin();
-	uint32_t read(void);
+	uint8_t objectDetected(void);
 	uint8_t available();
 	uint8_t getDistance(uint8_t sensor);
 	float getDistanceInMeters(uint8_t sensor);
