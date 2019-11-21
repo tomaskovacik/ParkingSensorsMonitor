@@ -32,6 +32,10 @@
 #include "ParkSensMon.h"
 #include <Arduino.h>
 
+#define COMPARE_TIME 10
+#define STARTPULSE 1500/COMPARE_TIME
+#define LONGPULSE 150/COMPARE_TIME
+
 //#define USE_TIMER0
 //#define USE_TIMER1
 #define USE_TIMER2
@@ -53,7 +57,7 @@ void ParkSensMon::setTimer(void){
   TCCR0B = 0x00; // Normal port operation, OC0 disconnected
   TCCR0A |= _BV(WGM01); // CTC mode
   TCCR0B |= _BV(CS01);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR0A = 10;//run compare rutine every 5us, 0.5x10
+  OCR0A = COMPARE_TIME*2;//run compare
   TCNT0 = 0;
   TIMSK0 |= _BV(OCIE0A); // enable output compare interrupt A on timer0
 }
@@ -72,7 +76,7 @@ void ParkSensMon::setTimer(void){
   TCCR1B = 0x00; // Normal port operation, OC0 disconnected
   TCCR1B |= _BV(WGM12); // CTC mode
   TCCR1B |= _BV(CS11);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR1A = 10;//run compare rutine every 5us, 0.5x10
+  OCR1A = COMPARE_TIME*2;//run compare
   TCNT1 = 0;
   TIMSK1 |= _BV(OCIE1A); // enable output compare interrupt A on timer0
 }
@@ -90,7 +94,7 @@ void ParkSensMon::setTimer(void){
   TCCR2B = 0x00; // Normal port operation, OC0 disconnected
   TCCR2A |= _BV(WGM21); // CTC mode
   TCCR2B |= _BV(CS21);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR2A = 10;//run compare rutine every 5us, 0.5x10
+  OCR2A = COMPARE_TIME*2;//run compare
   TCNT2 = 0;
   TIMSK2 |= _BV(OCIE2A); // enable output compare interrupt A on timer0
 }
@@ -107,7 +111,7 @@ void ParkSensMon::setTimer(void){
   TCCR3B = 0x00; // Normal port operation, OC0 disconnected
   TCCR3B |= _BV(WGM32); // CTC mode
   TCCR3B |= _BV(CS31);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR3A = 10;//run compare rutine every 5us, 0.5x10
+  OCR3A = COMPARE_TIME*2;//run compare
   TCNT3 = 0;
   TIMSK3 |= _BV(OCIE3A); // enable output compare interrupt A on timer0
 }
@@ -123,7 +127,7 @@ void ParkSensMon::setTimer(void){
   TCCR4B = 0x00; // Normal port operation, OC0 disconnected
   TCCR4B |= _BV(WGM42); // CTC mode
   TCCR4B |= _BV(CS41);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR4A = 10;//run compare rutine every 5us, 0.5x10
+  OCR4A = COMPARE_TIME*2;//run compare
   TCNT4 = 0;
   TIMSK4 |= _BV(OCIE4A); // enable output compare interrupt A on timer0
 }
@@ -138,7 +142,7 @@ void ParkSensMon::setTimer(void){
   TCCR5B = 0x00; // Normal port operation, OC0 disconnected
   TCCR5B |= _BV(WGM52); // CTC mode
   TCCR5B |= _BV(CS51);// prescaler = 8 -> 1 timer clock tick is 0.5us long @ 16Mhz
-  OCR5A = 10;//run compare rutine every 5us, 0.5x10
+  OCR5A = COMPARE_TIME*2;//run compare
   TCNT5 = 0;
   TIMSK5 |= _BV(OCIE5A); // enable output compare interrupt A on timer0
 }
@@ -155,7 +159,7 @@ void ParkSensMon::begin()
 ISR(__TIMERX_COMPA_vect) //5us
 {
 //  if (__enableCounting){
-  if (__pulses == 9999) __pulses = 0;
+//  if (__pulses == 9999) __pulses = 0;
   __pulses++;
 // }
 }
@@ -171,14 +175,14 @@ void ParkSensMon::countWidthOfPulse(void)
 {
 if (__newData == 0){
 //  __enableCounting=0;
-  uint16_t __pulseWidth = __pulses * 5;
+  uint16_t __pulseWidth = __pulses;
   __pulses = 0;
-  if (__pulseWidth > 1000) //start
+  if (__pulseWidth > STARTPULSE) //start
   {
     __bits = 0;
   } else {
     __data <<= 1;// 100us => 0
-    if (__pulseWidth > 150) { //200us => 1
+    if (__pulseWidth > LONGPULSE) { //200us => 1
       __data |=  1;
     }
     __bits++; 
