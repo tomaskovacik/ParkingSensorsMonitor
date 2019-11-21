@@ -37,7 +37,7 @@
 #define USE_TIMER2
 //#define USE_TIMER3
 //#define USE_TIMER4
-#define USE_TIMER5
+//#define USE_TIMER5
 
 ParkSensMon::ParkSensMon(uint8_t inpin)
 {
