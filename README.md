@@ -5,12 +5,13 @@ This repository contain library to read data send by cheap parking sensors on mo
 This is example of boards with desired functionality:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175723.jpg" />
+<a href="https://www.aliexpress.com/item/32729131286.html">@ali</a>
 
+anothere one which works (DA is data out):
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20200525_161259.jpg" />
-(DA is data out)
+(I cannot find listing for this sensors ..  but this one looks like it: <a href="https://www.aliexpress.com/item/32573184583.html">@ali</A>)
 
-and here is one which was in same plastic box but luck funkcionality:
-
+and here is one which was in same plastic box but luck funkcionality, most notable diffrence between previous one is that this one luck separate buzzer output connector:
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175726.jpg" />
 
 The protocol used in communication between the parking sensor unit and the monitor is pulse width modulation at 5V level.
