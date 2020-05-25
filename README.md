@@ -2,9 +2,12 @@
 
 This repository contain library to read data send by cheap parking sensors on monitor line, probably most units with some "monitor" send the same data. 
 
-This is example of board with desired functionality:
+This is example of boards with desired functionality:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175723.jpg" />
+
+<img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20200525_161259.jpg" />
+(DA is data out)
 
 and here is one which was in same plastic box but luck funkcionality:
 
