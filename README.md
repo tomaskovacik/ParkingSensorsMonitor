@@ -9,7 +9,7 @@ This is example of boards with desired functionality:
 
 anothere one which works (DA is data out):
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20200525_161259.jpg" />
-(I cannot find listing for this sensors ..  but this one looks like it: <a href="https://www.aliexpress.com/item/32573184583.html">@ali</A>)
+(I cannot find listing for this kit ..  but this one looks like it: <a href="https://www.aliexpress.com/item/32573184583.html">@ali</A>)
 
 and here is one which was in same plastic box but luck funkcionality, most notable diffrence between previous one is that this one luck separate buzzer output connector:
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175726.jpg" />
