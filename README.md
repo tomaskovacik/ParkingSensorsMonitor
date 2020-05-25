@@ -6,7 +6,7 @@ This is example of board with desired functionality:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175723.jpg" />
 
-ant here is one which was in same plastic box but luck funkcionality:
+and here is one which was in same plastic box but luck funkcionality:
 
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175726.jpg" />
 
