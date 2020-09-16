@@ -1,6 +1,6 @@
 # ParkingSensorsMonitor
 
-This repository contain library to read data send by cheap parking sensors on monitor line, probably most units with some "monitor" send the same data. 
+This repository contain library to read data send by cheap parking sensors on monitor line, probably most units with some sort of "monitor" send the same data. 
 
 This is example of boards with desired functionality:
 
