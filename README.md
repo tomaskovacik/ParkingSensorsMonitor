@@ -11,7 +11,7 @@ anothere one which works (DA is data out):
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20200525_161259.jpg" />
 (I cannot find listing for this kit ..  but this one looks like it: <a href="https://www.aliexpress.com/item/32573184583.html">@ali</A>)
 
-and here is one which was in same plastic box but luck funkcionality, most notable diffrence between previous one is that this one luck separate buzzer output connector:
+and here is one which was in same plastic box which did not hase this monitor support,  most notable diffrence between previous one is this one is missing separate buzzer output connector:
 <img src="https://raw.githubusercontent.com/tomaskovacik/ParkingSensorsMonitor/master/pics/20191115_175726.jpg" />
 
 The protocol used in communication between the parking sensor unit and the monitor is pulse width modulation at 5V level.
